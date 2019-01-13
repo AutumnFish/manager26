@@ -66,17 +66,17 @@ export default {
           // 成功
           // axios 调用接口
           this.$axios.post("login", this.formData).then(res => {
-            // console.log(res);
+            console.log(res);
             if (res.data.meta.status === 400) {
               // 错误
               this.$message.error(res.data.meta.msg);
             } else if (res.data.meta.status == 200) {
               // 正确
               this.$message.success(res.data.meta.msg);
-              // ({
-              //   message: res.data.meta.msg,
-              //   type: "success"
-              // });
+              // 保存token sessionStorage
+              window.sessionStorage.setItem("token", res.data.data.token);
+              // 去首页
+              this.$router.push("/");
             }
           });
         } else {
