@@ -19,7 +19,7 @@
         </el-row>
       </el-header>
       <el-container>
-        <el-aside width="200px">
+        <el-aside width="201px">
           <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
@@ -29,13 +29,15 @@
             text-color="#fff"
             active-text-color="#ffd04b"
           >
-            <el-submenu index="1">
+            <el-submenu v-for="(item, index) in menuList" :key="item.id" :index="item.order">
               <template slot="title">
                 <i class="el-icon-location"></i>
-                <span>导航一</span>
+                <span>{{item.authName}}</span>
               </template>
-              <el-menu-item index="1-1">
-                <i class="el-icon-menu"></i>选项1
+              <!-- 子菜单 -->
+              <el-menu-item v-for="(it, i) in item.children" :key="it.id" index="1-1">
+                <i class="el-icon-menu"></i>
+                {{it.authName}}
               </el-menu-item>
             </el-submenu>
           </el-menu>
@@ -47,6 +49,11 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      menuList: []
+    };
+  },
   methods: {
     logout() {
       // 注册在原型上的方法
@@ -74,6 +81,19 @@ export default {
           });
         });
     }
+  },
+  // created
+  created() {
+    this.$axios
+      .get("menus", {
+        headers: {
+          Authorization: window.sessionStorage.getItem("token")
+        }
+      })
+      .then(res => {
+        // console.log(res);
+        this.menuList = res.data.data;
+      });
   }
 };
 </script>
@@ -117,9 +137,9 @@ export default {
     text-align: center;
     line-height: 160px;
   }
-  // 设置折叠菜单 样式
-  .el-submenu__title {
-    text-align: left;
-  }
+}
+// 设置折叠菜单 样式
+.el-submenu__title {
+  text-align: left;
 }
 </style>
