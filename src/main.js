@@ -16,6 +16,7 @@ Vue.use(ElementUI);// Vue的原型上 增加了很多的方法
 // 导入自己抽取的路由
 import router from './lib/router';
 
+
 new Vue({
   el: '#app',
   // 挂载到 最顶级的Vue实例上

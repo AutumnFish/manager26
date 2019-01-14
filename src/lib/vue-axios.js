@@ -8,6 +8,7 @@ axios.defaults.baseURL = 'http://localhost:8888/api/private/v1/';
 export default {
   // Vue的插件必须实现 Vue会内部调用install方法
   install(Vue) {
+    console.log('插件安装啦');
     console.log(Vue);
     // 4. 添加实例方法
     Vue.prototype.$axios = axios;
@@ -17,5 +18,11 @@ export default {
 // let vueAxios = {}
 // vueAxios.install = function(Vue){
 //   Vue.prototype.$axios = axios;
+//   // this.$axios.get()
+//   // this.$axios.post()
+//   // Vue.prototype.$myMethod = function (methodOptions) {
+//   //   // 逻辑...
+//   // }
+//   // this.$myMethod()
 // }
 // export default vueAxios;

@@ -51,10 +51,8 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       // 没有token 没有登录
-      // this.$message.error("请先登录");
+      // 这里不是Vue实例 无法通过this访问 但是可以访问到Vue构造函数 可以通过原型访问
       Vue.prototype.$message.error('请先登录');
-      // 去登录页 编程式导航
-      // this.$router.push("login");
       // 打会登录页 可以使用next 进行路由跳转
       next('/login');
     }
