@@ -3,3 +3,10 @@ html,body{
   margin: 0;
   padding: 0;
 }
+/* 通用的颜色类 */
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.bg-purple {
+  background: #d3dce6;
+}

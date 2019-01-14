@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 // 导入路由管理的组件
 import login from '../components/login.vue';
 import main from '../components/main.vue';
+import user from '../components/user.vue';
 
 // 写规则
 let routes = [
@@ -20,9 +21,12 @@ let routes = [
   {
     path: '/',
     component: main,
-    // children:[
-    //   {}
-    // ]
+    children:[
+      {
+        path:'users',
+        component:user
+      }
+    ]
   }
 ]
 

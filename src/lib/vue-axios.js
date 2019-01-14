@@ -1,7 +1,5 @@
 // 导入axios
 import axios from 'axios';
-// 导入Vue
-// import Vue from 'vue';
 // 导入element-ui的message
 import {
   Message
@@ -34,11 +32,9 @@ axios.interceptors.response.use((response) => {
   // 根据响应的状态码 统一用户提示
   if (response.data.meta.status === 200) {
     // 成功 提示返回的信息
-    // Vue.prototype.$message.success(response.data.meta.msg);
     Message.success(response.data.meta.msg);
   } else if (response.data.meta.status === 400) {
     // 失败 提示 返回的信息
-    // Vue.prototype.$message.error(response.data.meta.msg);
     Message.error(response.data.meta.msg);
   }
   return response;

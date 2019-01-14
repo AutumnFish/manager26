@@ -41,7 +41,10 @@
             </el-submenu>
           </el-menu>
         </el-aside>
-        <el-main>Main</el-main>
+        <el-main>
+          <!-- 渲染嵌套路由匹配的组件 -->
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -83,16 +86,9 @@ export default {
   },
   // created
   created() {
-    this.$axios
-      .get("menus", {
-        headers: {
-          // Authorization: window.sessionStorage.getItem("token")
-        }
-      })
-      .then(res => {
-        // console.log(res);
-        this.menuList = res.data.data;
-      });
+    this.$axios.get("menus").then(res => {
+      this.menuList = res.data.data;
+    });
   }
 };
 </script>
@@ -134,8 +130,9 @@ export default {
   .el-main {
     background-color: #e9eef3;
     color: #333;
-    text-align: center;
-    line-height: 160px;
+    padding-top: 0;
+    // text-align: center;
+    // line-height: 160px;
   }
 
   // 设置折叠菜单 样式
