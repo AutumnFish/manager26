@@ -33,9 +33,9 @@ let router = new VueRouter({
 
 // 注册导航守卫(回调函数)
 router.beforeEach((to, from, next) => {
-  console.log('执行啦');
-  console.log(to);
-  console.log(from);
+  // console.log('执行啦');
+  // console.log(to);
+  // console.log(from);
   // ...
   // next 方法如果不执行 就不会跳转
   next();

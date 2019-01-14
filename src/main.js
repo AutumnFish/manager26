@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue from 'vue'; // let Vue = require('xxx');
 import App from './App.vue';
 
 // 全局样式导入
