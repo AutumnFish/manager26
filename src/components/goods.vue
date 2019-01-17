@@ -29,7 +29,7 @@
     <el-row>
       <el-col :span="24">
         <el-table :data="goodsList" style="width: 100%" border>
-          <el-table-column label="#" width="30" type="index"></el-table-column>
+          <el-table-column label="#" width="40" type="index"></el-table-column>
           <el-table-column prop="goods_name" label="商品名称" width="500"></el-table-column>
           <el-table-column prop="goods_price" label="商品价格" width="100"></el-table-column>
           <el-table-column prop="goods_weight" label="商品重量" width="100"></el-table-column>
@@ -54,6 +54,8 @@
           :page-size="pageData.pagesize"
           layout="total, sizes, prev, pager, next, jumper"
           :total="total"
+          @current-change="currentChange"
+          @size-change="sizeChange"
         ></el-pagination>
       </el-col>
     </el-row>
@@ -71,7 +73,7 @@ export default {
         // 页码
         pagenum: 1,
         // 页容量
-        pagesize: 10
+        pagesize: 6
       },
       // 总页数
       total: 0,
@@ -79,16 +81,42 @@ export default {
       goodsList: []
     };
   },
+  // 事件
+  methods: {
+    // 获取分页数据的方法
+    async getGoods() {
+      // 从上往下执行代码
+      let res = await this.$axios.get("goods", {
+        params: this.pageData
+      });
+      // 赋值
+      // console.log(res);
+      this.total = res.data.data.total;
+      this.goodsList = res.data.data.goods;
+    },
+    // 页码改变
+    currentChange(pagenum) {
+      // console.log(pagenum);
+      // 修改页码
+      this.pageData.pagenum = pagenum;
+      // 重新获取数据即可
+      this.getGoods();
+    },
+    // 页容量改变
+    sizeChange(pagesize) {
+      // console.log(pagesize);
+      // 修改页容量
+      this.pageData.pagesize = pagesize;
+      // 重置页码
+      this.pageData.pagenum = 1;
+      // 获取数据
+      this.getGoods();
+    }
+  },
   // 生命周期函数 回调函数
   async created() {
-    // 从上往下执行代码
-    let res = await this.$axios.get("goods", {
-      params: this.pageData
-    });
-    // 赋值
-    // console.log(res);
-    this.total = res.data.data.total;
-    this.goodsList = res.data.data.goods;
+    // 直接调用方法
+    this.getGoods();
   }
 };
 </script>
