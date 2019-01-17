@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 import login from '../components/login.vue';
 import main from '../components/main.vue';
 import user from '../components/user.vue';
+import roles from '../components/roles.vue';
 
 // 写规则
 let routes = [
@@ -25,6 +26,10 @@ let routes = [
       {
         path:'users',
         component:user
+      },
+      {
+        path:'roles',
+        component:roles
       }
     ]
   }

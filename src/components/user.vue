@@ -85,17 +85,16 @@ export default {
       userList: []
     };
   },
-  // 生命周期函数
-  created() {
-    this.$axios
-      .get("users", {
-        params: this.pageData
-      })
-      .then(res => {
-        // console.log(res);
-        this.userList = res.data.data.users;
-        this.total = res.data.data.total;
-      });
+  // 生命周期函数 回调函数
+  async created() {
+    // 从上往下执行代码
+    let res = await this.$axios.get("users", {
+      params: this.pageData
+    });
+    // 赋值
+    // console.log(res);
+    this.userList = res.data.data.users;
+    this.total = res.data.data.total;
   }
 };
 </script>
