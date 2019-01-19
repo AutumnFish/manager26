@@ -12,6 +12,8 @@ import user from '../components/user.vue';
 import roles from '../components/roles.vue';
 import rights from '../components/rights.vue';
 import goods from '../components/goods.vue';
+import params from '../components/params.vue';
+import categories from '../components/categories.vue';
 
 // 写规则
 let routes = [
@@ -40,6 +42,14 @@ let routes = [
       {
         path:'goods',
         component:goods
+      },
+      {
+        path:'params',
+        component:params
+      },
+      {
+        path:'categories',
+        component:categories
       },
     ]
   }

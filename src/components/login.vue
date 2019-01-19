@@ -70,9 +70,9 @@ export default {
             if (res.data.meta.status === 400) {
               // 错误
             } else if (res.data.meta.status == 200) {
-              // 正确
               // 保存token sessionStorage
               window.sessionStorage.setItem("token", res.data.data.token);
+              // 正确
               // 去首页
               this.$router.push("/");
             }

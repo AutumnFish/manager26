@@ -1,12 +1,32 @@
-html,body{
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
 /* 通用的颜色类 */
 .bg-purple-dark {
   background: #99a9bf;
 }
+
 .bg-purple {
   background: #d3dce6;
+}
+
+/* 抽取的间隙类 */
+.mt {
+  margin-top: 10px;
+}
+
+.mb {
+  margin-bottom: 10px;
+}
+
+.ml {
+  margin-left: 10px;
+}
+
+.mr {
+  margin-right: 10px;
 }
