@@ -30,3 +30,8 @@ body {
 .mr {
   margin-right: 10px;
 }
+
+/* 通用的 宽度约束类 */
+.my-el-input{
+  width: 90px;
+}

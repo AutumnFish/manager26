@@ -1,17 +1,20 @@
 import Vue from 'vue'; // let Vue = require('xxx');
 import App from './App.vue';
 
-// 全局样式导入
+
+// element-ui导入
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI); // Vue的原型上 增加了很多的方法
+
+// 全局样式导入 自己的base.css中的样式不被默认的覆盖
 import './assets/base.css';
 
 // 导入自己抽取的axios插件
 import VueAxios from './lib/vue-axios';
 Vue.use(VueAxios); // 调用插件实现的install方法
 
-// element-ui导入
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI); // Vue的原型上 增加了很多的方法
+
 
 // 导入自己抽取的路由
 import router from './lib/router';
