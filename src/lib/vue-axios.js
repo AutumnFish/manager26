@@ -30,7 +30,10 @@ axios.interceptors.request.use(config => {
 // 请求响应回来之后 会触发这个回调函数
 axios.interceptors.response.use((response) => {
   // 根据响应的状态码 统一用户提示
-  if (response.data.meta.status === 200) {
+
+  // if (response.data.meta.status === 200||response.data.meta.status === 201) {
+  // 判断状态码 是否在 成功数组中 在 正确提示
+  if ([200, 201].indexOf(response.data.meta.status) != -1) {
     // 成功 提示返回的信息
     Message.success(response.data.meta.msg);
   } else if (response.data.meta.status === 400) {
